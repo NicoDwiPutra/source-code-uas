@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="kelas">
+                <h1>Data Mining</h1>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/data">Informasi data</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section>
+                <div class="content">
+                    <div class="box">
+                        <form class="appointment-form" method="post" action="/predict">
+                            <h2>Klasifikasi Beras</h2>
+                            <div class="form-group">
+                                <label for="Age">Age</label>
+                                <input type="text" id="Age" name="Age" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="BMI">BMI</label>
+                                <input type="text" id="BMI" name="BMI" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Glucose">Glucose</label>
+                                <input type="text" id="Glucose" name="Glucose" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Insulin">Insulin</label>
+                                <input type="text" id="Insulin" name="Insulin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="HOMA">HOMA</label>
+                                <input type="text" id="HOMA" name="HOMA" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Leptin">Leptin</label>
+                                <input type="text" id="Leptin" name="Leptin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Adiponectin">Adiponectin</label>
+                                <input type="text" id="Adiponectin" name="Adiponectin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Resistin">Resistin</label>
+                                <input type="text" id="Resistin" name="Resistin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="MCP.1">MCP-1</label>
+                                <input type="text" id="MCP.1" name="MCP.1" required>
+                            </div>
+                            <button type="submit">Predict</button>
+                        </form>
+                        {% if prediction %}
+                        <div class="result">
+                            <h3>Prediction Result:</h3>
+                            <p>{{ prediction }}</p>
+                            <p>Accuracy: {{ accuracy }}</p>
+                        </div>
+                        {% endif %}
+                        {% if error %}
+                        <div class="error">
+                            <p>{{ error }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
